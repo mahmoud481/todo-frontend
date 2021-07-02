@@ -24,7 +24,7 @@
         <td>{{ note.title }}</td>
         <td>{{ (note.description.length > 50)? (note.description | slice:0:50) + '...': note.description }}</td>
         <td style="width:150px">
-          <a class="btn btn-success mr-1">
+          <a [routerLink]="['edit', note.id]" class="btn btn-success mr-1">
             <i class="fa fa-edit"></i>
           </a>
           <a href="javascript:;" class="btn btn-danger" (click)="deleteItem(noteModel, note.id)">

@@ -1,1 +1,38 @@
-<p>note-edit works!</p>
+<div class="jumbotron">
+  <div class="container">
+    <h1 class="display-3">
+      Edit Note
+    </h1>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <form [formGroup]="editForm" (submit)="onSubmit()">
+        <div class="form-group">
+          <label for="noteTitle">Title</label>
+          <input [ngClass]="{'is-invalid': submitted && f.title.errors}" *ngIf="loaded"
+          [(ngModel)]="noteData.title"  type="text" id="noteTitle" formControlName="title"
+          name="noteTitle" class="form-control" placeholder="Add Title" />
+          <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
+             <div *ngIf='f.title.errors.required'>Title is Required</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="noteDesc">Description</label>
+          <textarea *ngIf="loaded" [ngClass]="{'is-invalid': submitted && f.description.errors}"
+          [(ngModel)]="noteData.description"
+          type="text" id="noteDesc" name="noteDesc" formControlName="description"
+           class="form-control" placeholder="Add Description"></textarea>
+           <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
+            <div *ngIf='f.description.errors.required'>Description is Required</div>
+           </div>
+        </div>
+        <div class="form-group" >
+          <button type="submit" class="btn btn-primary">Update</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+

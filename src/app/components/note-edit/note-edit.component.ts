@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-
+import { ToastrService } from 'ngx-toastr';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { NoteService } from 'src/app/services/note.service';
 @Component({
   selector: 'app-note-edit',
   templateUrl: './note-edit.component.html',
@@ -7,9 +10,55 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NoteEditComponent implements OnInit {
 
-  constructor() { }
-
+  submitted = false;
+  noteId;
+  loaded = false;
+  noteData;
+  editForm: FormGroup;
+  constructor(
+    private _NoteService: NoteService,
+    private fb: FormBuilder,
+    private _ActivatedRoute: ActivatedRoute,
+    private _Router: Router,
+    private _ToastrService: ToastrService,
+  ) { }
   ngOnInit(): void {
+    this.buildEditForm();
+    this._ActivatedRoute.params.subscribe(params => {
+      this.noteId = params.id;
+    })
+    this.getnoteDetails();
+
+  }
+
+  getnoteDetails() {
+    this._NoteService.getNoteById(this.noteId).subscribe(res => {
+      this.noteData = res;
+      this.loaded = true;   // to render form after recieving data
+    });
+  }
+
+  onSubmit(): void {
+    // Stop if Form is invalid
+    this.submitted = true;
+    if (this.editForm.invalid) {
+      console.log(this.submitted);
+      return;
+    }
+    this._NoteService.updateNote(this.editForm.value, this.noteId).subscribe(res => {
+      this._ToastrService.success("note Updated Successfully", "Success", { timeOut: 2000, closeButton: true, progressBar: true });
+      this._Router.navigate(["/"])
+    }, err => {
+      this._ToastrService.error("Can't Update note", "Error");
+    })
+  }
+  // getter to return the controllers of the Form
+  get f() { return this.editForm.controls; }
+  buildEditForm() {
+    this.editForm = this.fb.group({
+      title: [null, [Validators.required]],
+      description: [null, [Validators.required]]
+    })
   }
 
 }
