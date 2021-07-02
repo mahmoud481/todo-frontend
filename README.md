@@ -17,6 +17,7 @@ Verify the version of Node.js installed.
 
 # Install Angular
 First  install  angular CLI
+
 ```npm install -g @angular/cli```
 
 after that clone the project 
@@ -29,6 +30,8 @@ To Install The npm packages run:
 ```npm install```
 
 If you want to change the API URL to a local server, simply edit `src/environments/environment.ts` and change `api_url` to the local server's URL (i.e. `localhost:8000/api`)
+
 To run The project run:
 ```ng s -o```
+
 Now your application is ready.
