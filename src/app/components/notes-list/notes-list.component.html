@@ -27,7 +27,7 @@
           <a class="btn btn-success mr-1">
             <i class="fa fa-edit"></i>
           </a>
-          <a class="btn btn-danger">
+          <a href="javascript:;" class="btn btn-danger" (click)="deleteItem(noteModel, note.id)">
             <i class="fa fa-trash"></i>
           </a>
         </td>
@@ -35,3 +35,19 @@
     </tbody>
   </table>
 </div>
+<ng-template #noteModel let-modal let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Hi there!</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>Are You Sure That You Want To Delete This!</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Yes</button>
+    <button type="button" class="btn btn-outline-dark" (click)="modal.dismiss('Cancel click')">Cancel</button>
+  </div>
+
+</ng-template>

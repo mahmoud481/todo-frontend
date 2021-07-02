@@ -28,6 +28,18 @@ export class NotesListComponent implements OnInit {
       alert(err);
     });
   }
-
+  // Delete Note
+  deleteItem(model: any, id: any): any {
+    this._NgbModal.open(model).result.then(result => {
+      this._NoteService.deleteNote(id).subscribe(res => {
+        this._ToastrService.success("Deleted Successfully", "Succes", { timeOut: 1500, closeButton: true, progressBar: true });
+        this.getAll(); // To re-render Page
+      }, err => {
+        this._ToastrService.error(err.statusText, "Error");
+      });
+    }, err => {
+      console.log(err);
+    })
+  }
 
 }
