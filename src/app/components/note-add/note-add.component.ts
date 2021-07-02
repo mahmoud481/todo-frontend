@@ -11,10 +11,9 @@ import { NoteService } from 'src/app/services/note.service';
   styleUrls: ['./note-add.component.css']
 })
 export class NoteAddComponent implements OnInit {
-
   addForm: FormGroup;
   submitted: boolean;
-
+  errArr:any;
   constructor(private _NoteService: NoteService,
     private _ToastrService: ToastrService,
     private fb: FormBuilder,
@@ -34,7 +33,10 @@ export class NoteAddComponent implements OnInit {
       this._ToastrService.success("Note Added Successfully", "Success", { timeOut: 2000, closeButton: true, progressBar: true });
       this._Router.navigate(["/"]);
     }, err => {
-      this._ToastrService.error("Can't Add Note", "Error");
+      this.errArr = Object.keys(err.error.errors).map(e=>{
+        return err.error.errors[e][0];
+      });
+      this._ToastrService.error(this.errArr.map(err =>err), "Error");
     })
   }
 

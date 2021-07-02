@@ -15,6 +15,7 @@ export class NoteEditComponent implements OnInit {
   loaded = false;
   noteData;
   editForm: FormGroup;
+  errArr:any;
   constructor(
     private _NoteService: NoteService,
     private fb: FormBuilder,
@@ -28,7 +29,6 @@ export class NoteEditComponent implements OnInit {
       this.noteId = params.id;
     })
     this.getnoteDetails();
-
   }
 
   getnoteDetails() {
@@ -49,7 +49,10 @@ export class NoteEditComponent implements OnInit {
       this._ToastrService.success("note Updated Successfully", "Success", { timeOut: 2000, closeButton: true, progressBar: true });
       this._Router.navigate(["/"])
     }, err => {
-      this._ToastrService.error("Can't Update note", "Error");
+      this.errArr = Object.keys(err.error.errors).map(e=>{
+        return err.error.errors[e][0];
+      });
+      this._ToastrService.error(this.errArr.map(err =>err), "Error");
     })
   }
   // getter to return the controllers of the Form
