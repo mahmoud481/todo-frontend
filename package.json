@@ -1,5 +1,5 @@
 {
-  "name": "task-front",
+  "name": "my-app",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -11,15 +11,21 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "~11.2.8",
+    "@angular/animations": "^11.2.14",
     "@angular/common": "~11.2.8",
     "@angular/compiler": "~11.2.8",
     "@angular/core": "~11.2.8",
     "@angular/forms": "~11.2.8",
+    "@angular/localize": "~11.2.8",
     "@angular/platform-browser": "~11.2.8",
     "@angular/platform-browser-dynamic": "~11.2.8",
     "@angular/router": "~11.2.8",
+    "@fortawesome/fontawesome-free": "^5.15.3",
+    "@ng-bootstrap/ng-bootstrap": "^9.1.2",
+    "bootstrap": "^4.5.0",
+    "ngx-toastr": "^14.0.0",
     "rxjs": "~6.6.0",
+    "toastr": "^2.1.4",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.3"
   },
