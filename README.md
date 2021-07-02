@@ -1,27 +1,37 @@
-# TaskFront
+# NODEJS
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.7.
 
-## Development server
+Run the apt update command on your Ubuntu to update package repository contents database.
+	```sudo apt update```
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+After system update, install Node.js 14 on Ubuntu / Debian by first installing the required repository.
+```curl -sL https://deb.nodesource.com/setup_14.x | sudo bash -```
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+You can begin the installation of Node.js 14 on Ubuntu & Debian Linux:
+```sudo apt -y install nodejs```
 
-## Build
+Verify the version of Node.js installed.
+```node  -v```
+```npm install -g npm@6```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+# Install Angular
+First  install  angular CLI
 
-## Running unit tests
+```npm install -g @angular/cli```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+after that clone the project 
 
-## Running end-to-end tests
+```git clone https://github.com/mahmoud481/todo-frontend.git```
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+```cd todo-frontend```
 
-## Further help
+To Install The npm packages run:
+```npm install```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+If you want to change the API URL to a local server, simply edit `src/environments/environment.ts` and change `api_url` to the local server's URL (i.e. `localhost:8000/api`)
+
+To run The project run:
+```ng s -o```
+
+Now your application is ready.
