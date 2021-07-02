@@ -11,13 +11,15 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NotesListComponent } from './components/notes-list/notes-list.component';
 import { NoteEditComponent } from './components/note-edit/note-edit.component';
 import { NoteAddComponent } from './components/note-add/note-add.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NotesListComponent,
     NoteEditComponent,
-    NoteAddComponent
+    NoteAddComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
