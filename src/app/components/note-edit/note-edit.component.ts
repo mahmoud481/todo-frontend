@@ -34,6 +34,8 @@ export class NoteEditComponent implements OnInit {
   getnoteDetails() {
     this._NoteService.getNoteById(this.noteId).subscribe(res => {
       this.noteData = res;
+      this.noteData = this.noteData.data;
+      
       this.loaded = true;   // to render form after recieving data
     });
   }
